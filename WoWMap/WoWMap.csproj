@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{13E48410-4D2D-4196-B013-0E84A5652E83}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WoWMap</RootNamespace>
+    <AssemblyName>WoWMap</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>5f33d180</NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CascLib">
+      <HintPath>..\CASCExplorer\CascLib\bin\Debug\CascLib.dll</HintPath>
+    </Reference>
+    <Reference Include="RecastLayer, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\RecastLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX">
+      <HintPath>$(SharpDXPackageBinDir)\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Builders\ContinentBuilder.cs" />
+    <Compile Include="Builders\DungeonBuilder.cs" />
+    <Compile Include="Builders\RecastConfig.cs" />
+    <Compile Include="Builders\TileBuilder.cs" />
+    <Compile Include="Chunks\MCRD.cs" />
+    <Compile Include="Chunks\MCRW.cs" />
+    <Compile Include="Chunks\MD20.cs" />
+    <Compile Include="Chunks\MLIQ.cs" />
+    <Compile Include="Chunks\MODD.cs" />
+    <Compile Include="Chunks\MODN.cs" />
+    <Compile Include="Chunks\MODR.cs" />
+    <Compile Include="Chunks\MODS.cs" />
+    <Compile Include="Chunks\MOGI.cs" />
+    <Compile Include="Chunks\MOGN.cs" />
+    <Compile Include="Chunks\MOGP.cs" />
+    <Compile Include="Chunks\MONR.cs" />
+    <Compile Include="Chunks\MOPY.cs" />
+    <Compile Include="Chunks\MOVI.cs" />
+    <Compile Include="Chunks\MOVT.cs" />
+    <Compile Include="Geometry\Geometry.cs" />
+    <Compile Include="Geometry\Transformation.cs" />
+    <Compile Include="Layers\ADT.cs" />
+    <Compile Include="Archive\CASC.cs" />
+    <Compile Include="Archive\DBC.cs" />
+    <Compile Include="Archive\MapRecord.cs" />
+    <Compile Include="Layers\M2.cs" />
+    <Compile Include="Layers\WMORoot.cs" />
+    <Compile Include="Readers\ChunkData.cs" />
+    <Compile Include="Readers\ChunkHeader.cs" />
+    <Compile Include="Chunks\MAIN.cs" />
+    <Compile Include="Chunks\MCVT.cs" />
+    <Compile Include="Chunks\MFBO.cs" />
+    <Compile Include="Chunks\MOHD.cs" />
+    <Compile Include="Chunks\MPHD.cs" />
+    <Compile Include="Layers\LiquidChunk.cs" />
+    <Compile Include="Layers\MapChunk.cs" />
+    <Compile Include="Helpers.cs" />
+    <Compile Include="Readers\Chunk.cs" />
+    <Compile Include="Chunks\MCIN.cs" />
+    <Compile Include="Chunks\MCLQ.cs" />
+    <Compile Include="Chunks\MCLY.cs" />
+    <Compile Include="Chunks\MCNK.cs" />
+    <Compile Include="Chunks\MCNR.cs" />
+    <Compile Include="Chunks\MDDF.cs" />
+    <Compile Include="Chunks\MH2O.cs" />
+    <Compile Include="Chunks\MHDR.cs" />
+    <Compile Include="Chunks\MMDX.cs" />
+    <Compile Include="Chunks\MMID.cs" />
+    <Compile Include="Chunks\MODF.cs" />
+    <Compile Include="Chunks\MTEX.cs" />
+    <Compile Include="Chunks\MVER.cs" />
+    <Compile Include="Chunks\MWID.cs" />
+    <Compile Include="Chunks\MWMO.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Geometry\Triangle.cs" />
+    <Compile Include="Layers\WDT.cs" />
+    <Compile Include="Layers\WMOGroup.cs" />
+    <Compile Include="Readers\ChunkReader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\SharpDX.2.6.2\build\SharpDX.targets" Condition="Exists('..\packages\SharpDX.2.6.2\build\SharpDX.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\SharpDX.2.6.2\build\SharpDX.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\SharpDX.2.6.2\build\SharpDX.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
