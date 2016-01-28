@@ -111,9 +111,9 @@ namespace WoWMap.Builders
            
 
             var endRef = _query.FindNearestPolygon(end, extents, Filter);
-           
 
-            uint[] pathCorridor;
+
+            ulong[] pathCorridor;
             var status = _query.FindPath(startRef, endRef, start, end, Filter, out pathCorridor);
             if (status.Equals(DetourStatus.Failure) || pathCorridor == null)
                 throw new Exception("FindPath failed, start: " + startRef + " end: " + endRef);
@@ -123,15 +123,12 @@ namespace WoWMap.Builders
 
             float[] finalPath;
             StraightPathFlag[] pathFlags;
-            uint[] pathRefs;
+            ulong[] pathRefs;
             status = _query.FindStraightPath(start, end, pathCorridor, out finalPath, out pathFlags, out pathRefs);
             if (status.Equals(DetourStatus.Failure) || (finalPath == null || pathFlags == null || pathRefs == null))
                 throw new Exception("FindStraightPath failed, refs in corridor: " + pathCorridor.Length);
 
-            for (int i = 0; i < finalPath.Length/3; i++)
-            {
-                Console.WriteLine("X=" + finalPath[(i * 3) + 0] +", Y=" + finalPath[(i * 3) +1] +", Z=" + finalPath[(i * 3) +2]);
-            }
+            
 
         }
 

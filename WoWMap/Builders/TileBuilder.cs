@@ -126,7 +126,7 @@ namespace WoWMap.Builders
             int width = Config.TileWidth + (Config.BorderSize * 2);
             if (!Context.CreateHeightfield(out hf, width, width, bbMin, bbMax, Config.CellSize, Config.CellHeight))
                 throw new OutOfMemoryException("CreateHeightfield ran out of memory");
-
+            Context.MarkWalkableTriangles(Config.WalkableSlopeAngle, ref vertices, ref triangles,out areas);
           //  Context.ClearUnwalkableTriangles(Config.WalkableSlopeAngle, ref vertices, ref triangles, areas);
             Context.RasterizeTriangles(ref vertices, ref triangles, ref areas, hf, Config.WalkableClimb);
 

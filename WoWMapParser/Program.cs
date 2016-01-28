@@ -13,6 +13,8 @@ using WoWMap.Archive;
 using WoWMap.Layers;
 using WoWMap.Geometry;
 using WoWMap.Builders;
+using WoWMapPather;
+using SharpDX;
 
 namespace WoWMapParser
 {
@@ -23,10 +25,10 @@ namespace WoWMapParser
             Initialize();
 
             ReadMapsDBC();
-           ReadADT();
+          // ReadADT();
            //ReadADTs();
             //CreateNavmesh();
-            //TestNavmesh();
+           TestNavmesh();
           //  ReadWDT();
            // ReadWMO();
 
@@ -75,7 +77,7 @@ namespace WoWMapParser
             geom.Transform = true;
             geom.AddADT(adt);
             geom.SaveWavefrontObject(Path.GetFileNameWithoutExtension(adt.Filename) + ".obj");
-            WoWMap.Builders.ContinentBuilder b = new WoWMap.Builders.ContinentBuilder("Azeroth", 31, 49,2,1);
+            WoWMap.Builders.ContinentBuilder b = new WoWMap.Builders.ContinentBuilder("Azeroth", 28, 28,1,1);
             b.Build();
         }
 
@@ -119,7 +121,25 @@ namespace WoWMapParser
 
             //TestNavmesh(new SharpNav.TiledNavMesh(build));
         }
+        static void TestNavmesh()
+        {
+          /*  byte[] dataA, dataB;
+            var builder = new TileBuilder("Azeroth", 32, 48);
+            dataA = builder.Build();*/
 
+          /*  builder = new TileBuilder("Azeroth", 32, 49);
+            dataB = builder.Build();*/
+
+            var pather = new WowMapPather("Azeroth");
+           pather.LoadTile(28,28);
+            // pather.LoadTile(dataB);
+
+            var start = new Vector3(1662.9f, 139.2f, 1672.2f);
+            var end = new Vector3(1678.3f, 120.5f, 1665.3f);
+            var path = pather.FindPath(start, end);
+
+
+        }
         /*static void TestNavmesh(SharpNav.TiledNavMesh tmesh)
         {
             // Azeroth 28 28 / Deathknell (wow-style coordinates)

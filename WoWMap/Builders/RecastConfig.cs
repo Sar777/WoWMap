@@ -34,7 +34,8 @@ namespace WoWMap
                 get
                 {
                     var ret = new RecastConfig();
-                    const float tileSize = WoWMap.Constants.TileSize;
+                    const float gridDiv = 4;
+                    const float tileSize = (Constants.TileSize / gridDiv);
                     const int tileVoxelSize = 1800;
                     ret.CellSize = tileSize / tileVoxelSize;
                     ret.CellHeight = 0.3f;
@@ -50,8 +51,8 @@ namespace WoWMap
                     ret.WalkableHeight = (int)Math.Round(ret.WorldWalkableHeight / ret.CellHeight);
                     ret.WalkableRadius = (int)Math.Round(ret.WorldWalkableRadius / ret.CellSize);
                     ret.MaxEdgeLength = ret.WalkableRadius * 8;
-                    ret.BorderSize = ret.WalkableRadius + 4;
-                    ret.TileWidth = tileVoxelSize+ret.BorderSize*2;
+                    ret.BorderSize = ret.WalkableRadius + 8;
+                    ret.TileWidth = (int)(tileVoxelSize / gridDiv) + (ret.BorderSize * 2);
                     ret.MaxVertsPerPoly = 6;
                     ret.MaxSimplificationError = 1.3f;
                     return ret;

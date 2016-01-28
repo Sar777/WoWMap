@@ -56,6 +56,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WoWMapPather\WoWMapPather.csproj">
+      <Project>{8394b961-bf1c-4bd4-a4fa-77dc3af1aeb6}</Project>
+      <Name>WoWMapPather</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WoWMap\WoWMap.csproj">
       <Project>{13e48410-4d2d-4196-b013-0e84a5652e83}</Project>
       <Name>WoWMap</Name>
