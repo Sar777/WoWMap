@@ -33,29 +33,7 @@ namespace WoWMap
             {
                 get
                 {
-                /* var ret = new RecastConfig();
-                 const float tileSize = Constants.TileSize;
-                 const int tileVoxelSize = 1800;
-                 ret.CellSize = tileSize / tileVoxelSize;
-                 ret.CellHeight = 0.3f;
-                 ret.MinRegionArea = (int)Math.Pow(6, 2);
-                 ret.MergeRegionArea = (int)Math.Pow(12, 2);
-                 ret.WalkableSlopeAngle = 50f;
-                 ret.DetailSampleDistance = 3f;
-                 ret.DetailSampleMaxError = 1.25f;
-                 ret.WorldWalkableClimb = 1f;
-                 ret.WorldWalkableHeight = 2.1f;
-                 ret.WorldWalkableRadius = 0.6f;
-                 ret.WalkableClimb = (int)Math.Round(ret.WorldWalkableClimb / ret.CellHeight);
-                 ret.WalkableHeight = (int)Math.Round(ret.WorldWalkableHeight / ret.CellHeight);
-                 ret.WalkableRadius = (int)Math.Round(ret.WorldWalkableRadius / ret.CellSize);
-                 ret.MaxEdgeLength = ret.WalkableRadius * 8;
-                 ret.BorderSize = ret.WalkableRadius + 8;
-                 ret.TileWidth = tileVoxelSize;
-                 ret.MaxVertsPerPoly = 6;
-                 ret.MaxSimplificationError = 1.3f;
-                 return ret;*/
-
+ 
                 var ret = new RecastConfig();
                 const float tileSize = (533f + (1f / 3f));
                 const int tileVoxelSize = 1800;
@@ -79,7 +57,7 @@ namespace WoWMap
                 ret.MaxSimplificationError = 1.3f;
                 return ret; 
 
-            }
+              }
             }
 
             public static RecastConfig Dungeon
