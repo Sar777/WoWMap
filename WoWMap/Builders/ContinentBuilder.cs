@@ -89,12 +89,16 @@ namespace WoWMap.Builders
             var extents = new Vector3(2.5f, 2.5f, 2.5f).ToFloatArray();
 
 
-            var startVec = new Vector3(-9467.8f, 64.2f, 55.9f);
-            var endVec = new Vector3(-9248.9f, -93.35f, 70.3f);
+            // var startVec = new Vector3(-9467.8f, 64.2f, 55.9f);
+            //var endVec = new Vector3(-9248.9f, -93.35f, 70.3f);
 
 
-           // Vector3 startVec = new Vector3(1672.2f, 1662.9f, 139.2f);
-           // Vector3 endVec = new Vector3(1665.2f, 1678.2f, 120.5f);
+            //Vector3 startVec = new Vector3(1672.2f, 1662.9f, 139.2f);
+            //Vector3 startVec = new Vector3(1665.2f, 1678.2f, 120.5f);
+
+            Vector3 startVec = new Vector3 ( -8949.95f, -132.493f, 83.5312f );
+            Vector3 endVec = new Vector3 ( -9046.507f, -45.71962f, 88.33186f );
+
             var start = startVec.ToRecast().ToFloatArray();
             var end = endVec.ToRecast().ToFloatArray();
 
@@ -113,7 +117,7 @@ namespace WoWMap.Builders
             var endRef = _query.FindNearestPolygon(end, extents, Filter);
 
 
-            ulong[] pathCorridor;
+            uint[] pathCorridor;
             var status = _query.FindPath(startRef, endRef, start, end, Filter, out pathCorridor);
             if (status.Equals(DetourStatus.Failure) || pathCorridor == null)
                 throw new Exception("FindPath failed, start: " + startRef + " end: " + endRef);
@@ -123,7 +127,7 @@ namespace WoWMap.Builders
 
             float[] finalPath;
             StraightPathFlag[] pathFlags;
-            ulong[] pathRefs;
+            uint[] pathRefs;
             status = _query.FindStraightPath(start, end, pathCorridor, out finalPath, out pathFlags, out pathRefs);
             if (status.Equals(DetourStatus.Failure) || (finalPath == null || pathFlags == null || pathRefs == null))
                 throw new Exception("FindStraightPath failed, refs in corridor: " + pathCorridor.Length);

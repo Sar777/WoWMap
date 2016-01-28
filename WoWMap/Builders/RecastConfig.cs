@@ -33,30 +33,53 @@ namespace WoWMap
             {
                 get
                 {
-                    var ret = new RecastConfig();
-                    const float gridDiv = 4;
-                    const float tileSize = (Constants.TileSize / gridDiv);
-                    const int tileVoxelSize = 1800;
-                    ret.CellSize = tileSize / tileVoxelSize;
-                    ret.CellHeight = 0.3f;
-                    ret.MinRegionArea = (int)Math.Pow(6, 2);
-                    ret.MergeRegionArea = (int)Math.Pow(12, 2);
-                    ret.WalkableSlopeAngle = 50f;
-                    ret.DetailSampleDistance = 3f;
-                    ret.DetailSampleMaxError = 1.25f;
-                    ret.WorldWalkableClimb = 1f;
-                    ret.WorldWalkableHeight = 2.1f;
-                    ret.WorldWalkableRadius = 0.6f;
-                    ret.WalkableClimb = (int)Math.Round(ret.WorldWalkableClimb / ret.CellHeight);
-                    ret.WalkableHeight = (int)Math.Round(ret.WorldWalkableHeight / ret.CellHeight);
-                    ret.WalkableRadius = (int)Math.Round(ret.WorldWalkableRadius / ret.CellSize);
-                    ret.MaxEdgeLength = ret.WalkableRadius * 8;
-                    ret.BorderSize = ret.WalkableRadius + 8;
-                    ret.TileWidth = (int)(tileVoxelSize / gridDiv) + (ret.BorderSize * 2);
-                    ret.MaxVertsPerPoly = 6;
-                    ret.MaxSimplificationError = 1.3f;
-                    return ret;
-                }
+                /* var ret = new RecastConfig();
+                 const float tileSize = Constants.TileSize;
+                 const int tileVoxelSize = 1800;
+                 ret.CellSize = tileSize / tileVoxelSize;
+                 ret.CellHeight = 0.3f;
+                 ret.MinRegionArea = (int)Math.Pow(6, 2);
+                 ret.MergeRegionArea = (int)Math.Pow(12, 2);
+                 ret.WalkableSlopeAngle = 50f;
+                 ret.DetailSampleDistance = 3f;
+                 ret.DetailSampleMaxError = 1.25f;
+                 ret.WorldWalkableClimb = 1f;
+                 ret.WorldWalkableHeight = 2.1f;
+                 ret.WorldWalkableRadius = 0.6f;
+                 ret.WalkableClimb = (int)Math.Round(ret.WorldWalkableClimb / ret.CellHeight);
+                 ret.WalkableHeight = (int)Math.Round(ret.WorldWalkableHeight / ret.CellHeight);
+                 ret.WalkableRadius = (int)Math.Round(ret.WorldWalkableRadius / ret.CellSize);
+                 ret.MaxEdgeLength = ret.WalkableRadius * 8;
+                 ret.BorderSize = ret.WalkableRadius + 8;
+                 ret.TileWidth = tileVoxelSize;
+                 ret.MaxVertsPerPoly = 6;
+                 ret.MaxSimplificationError = 1.3f;
+                 return ret;*/
+
+                var ret = new RecastConfig();
+                const float tileSize = (533f + (1f / 3f));
+                const int tileVoxelSize = 1800;
+                ret.CellSize = tileSize / tileVoxelSize;
+                ret.CellHeight = 0.4f;
+                ret.MinRegionArea = 20;
+                ret.MergeRegionArea = 40;
+                ret.WalkableSlopeAngle = 50f;
+                ret.DetailSampleDistance = 3f;
+                ret.DetailSampleMaxError = 1.25f;
+                ret.WorldWalkableClimb = 1f;
+                ret.WorldWalkableHeight = 1.6f;
+                ret.WorldWalkableRadius = 0.2951f;
+                ret.WalkableClimb = (int)Math.Round(ret.WorldWalkableClimb / ret.CellHeight);
+                ret.WalkableHeight = (int)Math.Round(ret.WorldWalkableHeight / ret.CellHeight);
+                ret.WalkableRadius = (int)Math.Round(ret.WorldWalkableRadius / ret.CellSize);
+                ret.MaxEdgeLength = ret.WalkableRadius * 8;
+                ret.BorderSize = ret.WalkableRadius + 4;
+                ret.TileWidth = tileVoxelSize + (ret.BorderSize * 2);
+                ret.MaxVertsPerPoly = 6;
+                ret.MaxSimplificationError = 1.3f;
+                return ret; 
+
+            }
             }
 
             public static RecastConfig Dungeon

@@ -151,7 +151,7 @@ namespace WoWMapPather
         {
             CheckDungeon();
 
-            if (_mesh.HasTileAt(x, y,0))
+            if (_mesh.HasTileAt(x, y))
                 return true;
             var path = GetTilePath(x, y);
             if (!File.Exists(path))
@@ -162,12 +162,12 @@ namespace WoWMapPather
 
         public bool RemoveTile(int x, int y, out byte[] tileData)
         {
-            return _mesh.RemoveTileAt(x, y, 0,out tileData).HasSucceeded();
+            return _mesh.RemoveTileAt(x, y,out tileData).HasSucceeded();
         }
 
         public bool RemoveTile(int x, int y)
         {
-            return _mesh.RemoveTileAt(x, y,0).HasSucceeded();
+            return _mesh.RemoveTileAt(x, y).HasSucceeded();
         }
         /*for (int i = 0; i < finalPath.Length/3; i++)
             {
@@ -193,7 +193,7 @@ namespace WoWMapPather
             if (endRef == 0)
                 throw new Exception( "No polyref found for end");
 
-            ulong[] pathCorridor;
+            uint[] pathCorridor;
             var status = _query.FindPath(startRef, endRef, start, end, Filter, out pathCorridor);
             if (status.HasFailed() || pathCorridor == null)
                 throw new Exception( "FindPath failed, start: " + startRef + " end: " + endRef);
@@ -203,7 +203,7 @@ namespace WoWMapPather
 
             float[] finalPath;
             StraightPathFlag[] pathFlags;
-            ulong[] pathRefs;
+            uint[] pathRefs;
             status = _query.FindStraightPath(start, end, pathCorridor, out finalPath, out pathFlags, out pathRefs);
             if (status.HasFailed() || (finalPath == null || pathFlags == null || pathRefs == null))
                 throw new Exception("FindStraightPath failed, refs in corridor: " + pathCorridor.Length);

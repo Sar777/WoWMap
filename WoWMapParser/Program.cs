@@ -25,10 +25,10 @@ namespace WoWMapParser
             Initialize();
 
             ReadMapsDBC();
-          // ReadADT();
+          ReadADT();
            //ReadADTs();
             //CreateNavmesh();
-           TestNavmesh();
+         //  TestNavmesh();
           //  ReadWDT();
            // ReadWMO();
 
@@ -69,7 +69,7 @@ namespace WoWMapParser
 
         static void ReadADT()
         {
-            var adt = new ADT("Azeroth", 28, 28);
+            var adt = new ADT("Azeroth", 32, 48);
             //var adt = new ADT("Kalimdor", 32, 36);
             adt.Read();
 
@@ -77,7 +77,7 @@ namespace WoWMapParser
             geom.Transform = true;
             geom.AddADT(adt);
             geom.SaveWavefrontObject(Path.GetFileNameWithoutExtension(adt.Filename) + ".obj");
-            WoWMap.Builders.ContinentBuilder b = new WoWMap.Builders.ContinentBuilder("Azeroth", 28, 28,1,1);
+            WoWMap.Builders.ContinentBuilder b = new WoWMap.Builders.ContinentBuilder("Azeroth", 32, 48,1,1);
             b.Build();
         }
 

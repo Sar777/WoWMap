@@ -39,28 +39,26 @@ namespace WoWMap.Builders
 
         private void CalculateTileBounds(out Vector3 bmin, out Vector3 bmax)
         {
-            var origin = new[] { -WoWMap.Constants.MaxXY, 0, -WoWMap.Constants.MaxXY };
+            var origin = new[] { -Constants.MaxXY, 0, -Constants.MaxXY };
             bmin = new Vector3();
 
             bmax = new Vector3();
 
-            bmin.X = origin[0] + (WoWMap.Constants.TileSize * X);
-            bmin.Z = origin[2] + (WoWMap.Constants.TileSize * Y);
-            bmax.X = origin[0] + (WoWMap.Constants.TileSize * (X + 1));
-            bmax.Z = origin[2] + (WoWMap.Constants.TileSize * (Y + 1));
+            bmin.X = origin[0] + (Constants.TileSize * X);
+            bmin.Z = origin[2] + (Constants.TileSize * Y);
+            bmax.X = origin[0] + (Constants.TileSize * (X + 1));
+            bmax.Z = origin[2] + (Constants.TileSize * (Y + 1));
         }
 
         private void CalculateTileBounds(out float[] bmin, out float[] bmax)
         {
-            var origin = new[] { -WoWMap.Constants.MaxXY, 0, -WoWMap.Constants.MaxXY };
+            var origin = new[] { -Constants.MaxXY, 0, -Constants.MaxXY };
             bmin = new float[3];
             bmax = new float[3];
             bmin[0] = origin[0] + (Constants.TileSize * X);
             bmin[2] = origin[2] + (Constants.TileSize * Y);
             bmax[0] = origin[0] + (Constants.TileSize * (X + 1));
             bmax[2] = origin[2] + (Constants.TileSize * (Y + 1));
-          /*  bmax = bmax.ToRecast();
-            bmin = bmin.ToRecast();*/
         }
 
         public byte[] Build()
@@ -78,8 +76,8 @@ namespace WoWMap.Builders
 
             float[] bbMin, bbMax;
             CalculateTileBounds(out bbMin, out bbMax);
-
             Geometry.CalculateMinMaxHeight(out bbMin[1], out bbMax[1]);
+
 
 
             // again, we load everything - wasteful but who cares
@@ -121,6 +119,7 @@ namespace WoWMap.Builders
             bbMin[2] -= Config.BorderSize * Config.CellSize;
             bbMax[0] += Config.BorderSize * Config.CellSize;
             bbMax[2] += Config.BorderSize * Config.CellSize;
+
 
             Heightfield hf;
             int width = Config.TileWidth + (Config.BorderSize * 2);
